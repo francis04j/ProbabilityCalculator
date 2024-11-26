@@ -5,21 +5,14 @@ namespace ProbabilityApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class CalculateController
+public class CalculateController(ILogger<CalculateController> logger, ICalculationLogger calculationLogger)
 {
-    private readonly ILogger<CalculateController> _logger;
-
-    public CalculateController(ILogger<CalculateController> logger)
-    {
-        _logger = logger;
-    }
-
     [HttpPost]
     public IResult Post([FromBody] ProbabilityRequest request)
     {
         try
         {
-            var calculator = new ProbabilityCalculator();
+            var calculator = new ProbabilityCalculator(calculationLogger);
             double result = calculator.Calculate(request.ProbA, request.ProbB, request.Operation);
             return Results.Ok(new { result = Math.Round(result, 4) });
         }
@@ -27,9 +20,10 @@ public class CalculateController
         {
             return Results.BadRequest(new { error = ex.Message });
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             //log error
+            logger.LogError("Error occured while calculating probability", ex);
             return Results.StatusCode(500);
         }
     }

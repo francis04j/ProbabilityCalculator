@@ -1,18 +1,19 @@
-using System;
-using Xunit;
 using FluentAssertions;
 using ProbabilityApi;
 using ProbabilityApi.Models;
+using Moq;
 
 namespace UnitTests;
 
 public class ProbabilityCalculatorTests
 {
     private readonly ProbabilityCalculator _calculator;
+    private readonly Mock<ICalculationLogger> _mockLogger;
 
     public ProbabilityCalculatorTests()
     {
-        _calculator = new ProbabilityCalculator();
+        _mockLogger = new Mock<ICalculationLogger>();
+        _calculator = new ProbabilityCalculator(_mockLogger.Object);
     }
 
     [Theory]
@@ -55,5 +56,31 @@ public class ProbabilityCalculatorTests
         // Assert
         act.Should().Throw<InvalidOperationException>()
             .WithMessage("Invalid operation");
+    }
+    
+    [Fact]
+    public void Calculate_ValidInputs_CallsLogger()
+    {
+        // Act
+        double result = _calculator.Calculate(0.5, 0.4, ProbabilityOperation.CombinedWith);
+
+        // Assert
+        _mockLogger.Verify(
+            logger => logger.Log(0.5, 0.4, ProbabilityOperation.CombinedWith, result),
+            Times.Once
+        );
+    }
+    
+    [Theory]
+    [InlineData(-0.1, 0.5, ProbabilityOperation.CombinedWith)]
+    [InlineData(1.2, 0.4, ProbabilityOperation.Either)]
+    public void Calculate_InvalidProbabilities_DoesnotLog(double probA, double probB, ProbabilityOperation operation)
+    {
+
+        // Act
+        Action act = () => _calculator.Calculate(probA, probB, operation);
+
+        // Assert
+        _mockLogger.Verify(logger => logger.Log(It.IsAny<double>(), It.IsAny<double>(), It.IsAny<ProbabilityOperation>(), It.IsAny<double>()), Times.Never);
     }
 }

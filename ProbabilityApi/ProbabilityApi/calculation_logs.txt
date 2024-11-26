@@ -1,0 +1,3 @@
+2024-11-26 18:50:33 | Operation: CombinedWith | ProbA: 0.2 | ProbB: 0.5 | Result: 0.1
+2024-11-26 18:51:48 | Operation: Either | ProbA: 0.2 | ProbB: 0.5 | Result: 0.6
+2024-11-26 18:57:05 | Operation: Either | ProbA: 0.2 | ProbB: 0.5 | Result: 0.6
