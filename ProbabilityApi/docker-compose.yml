@@ -1,0 +1,6 @@
+﻿services:
+  probabilityapi:
+    image: probabilityapi
+    build:
+      context: .
+      dockerfile: ProbabilityApi/Dockerfile
