@@ -9,9 +9,13 @@
 
 name: Build and deploy ProbabilityApi to an Azure Web App
 
+defaults:
+    run:
+      working-directory: ./ProbabilityApi/ProbabilityApi
+
 env:
   AZURE_WEBAPP_NAME: MY_WEBAPP_NAME   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '../ProbabilityApi'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: '../../ProbabilityApi/ProbabilityApi'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8'                 # set this to the .NET Core version to use
 
 on:
@@ -38,7 +42,7 @@ jobs:
           dotnet build --configuration Release
           echo "hello"
           echo ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ProbabilityApi' 
+          dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}' 
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
@@ -46,7 +50,7 @@ jobs:
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/ProbabilityApi'
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
 
     #   - name: Set up dependency caching for faster builds
     #     uses: actions/cache@v3
