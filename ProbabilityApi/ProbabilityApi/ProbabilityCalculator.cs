@@ -12,6 +12,7 @@ public class ProbabilityCalculator
     {
         _logger = logger;
     }
+    
     public double Calculate(double probA, double probB, ProbabilityOperation operation)
     {
         // Validate inputs
