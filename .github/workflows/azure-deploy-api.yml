@@ -14,7 +14,7 @@ defaults:
       working-directory: ./ProbabilityApi/ProbabilityApi
 
 env:
-  AZURE_WEBAPP_NAME: MY_WEBAPP_NAME   # set this to your application's name
+  AZURE_WEBAPP_NAME: dotnetwebapi001   # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '../../ProbabilityApi/ProbabilityApi'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8'                 # set this to the .NET Core version to use
 
