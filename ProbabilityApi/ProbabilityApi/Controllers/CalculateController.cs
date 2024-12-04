@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using Hellang.Middleware.ProblemDetails;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using ProbabilityApi.Models;
 
@@ -18,7 +21,7 @@ public class CalculateController(ILogger<CalculateController> logger, ICalculati
         }
         catch (ArgumentException ex)
         {
-            return Results.BadRequest(new { error = ex.Message });
+            throw new ValidationException(ex.Message);
         }
         catch (Exception ex)
         {

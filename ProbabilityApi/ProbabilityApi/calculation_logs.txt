@@ -2,3 +2,15 @@
 2024-11-26 18:51:48 | Operation: Either | ProbA: 0.2 | ProbB: 0.5 | Result: 0.6
 2024-11-26 18:57:05 | Operation: Either | ProbA: 0.2 | ProbB: 0.5 | Result: 0.6
 2024-12-03 04:41:57 | Operation: CombinedWith | ProbA: 0.3 | ProbB: 0.4 | Result: 0.12
+2024-12-04 11:55:09 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 11:59:39 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 11:59:57 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 12:01:36 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 12:01:59 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 12:05:25 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 12:09:33 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 12:25:37 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 12:25:57 | Operation: CombinedWith | ProbA: 4 | ProbB: 6 | Result: 24
+2024-12-04 12:26:49 | Operation: CombinedWith | ProbA: 0.4 | ProbB: 6 | Result: 2.4
+2024-12-04 12:28:08 | Operation: CombinedWith | ProbA: 9 | ProbB: 0.4 | Result: 3.6
+2024-12-04 12:28:17 | Operation: CombinedWith | ProbA: 0.9 | ProbB: 0.4 | Result: 0.36
